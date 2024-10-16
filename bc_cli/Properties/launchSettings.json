@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "bc_cli": {
+      "commandName": "Project",
+      "commandLineArgs": "https://mayhemindie.bandcamp.com/album/de-mysteriis-dom-sathanas"
+    }
+  }
+}
