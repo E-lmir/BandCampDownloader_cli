@@ -5,7 +5,27 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackAsTool>True</PackAsTool>
+    <ToolCommandName>bc</ToolCommandName>
+    <Title>BandCampDownloader_cli</Title>
+    <Company>w1r3d</Company>
+    <Description>Allow download tracks from BandCamp</Description>
+    <PackageIcon>Nolla.png</PackageIcon>
+    <PackageReadmeFile>bc_readme.md</PackageReadmeFile>
+    <PackageProjectUrl>https://github.com/E-lmir/BandCampDownloader_cli</PackageProjectUrl>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Desktop\bc_readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\..\..\Downloads\Nolla.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BCDownloader" Version="1.0.3" />

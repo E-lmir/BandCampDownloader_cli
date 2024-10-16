@@ -11,13 +11,25 @@ namespace bc_cli
             var downloader = new Downloader(client);
             const int SkiaSharpMaxQuality = 100;
 
-            foreach (var arg in args)
+            var tokenSource = new CancellationTokenSource();
+            var ct = tokenSource.Token;
+            try
             {
+                var task = Task.Run(() =>
+                {
+                    while (true)
+                    {
+                        Console.Write(".");
+                        Thread.Sleep(50);
+                        ct.ThrowIfCancellationRequested();
+                    }
+                }, tokenSource.Token);
+
                 var albumInfo = await downloader.GetAlbumInfoAsync(args[0]);
                 if (albumInfo is not null)
                 {
                     var directoryInfo = Directory.CreateDirectory(albumInfo.Artist);
-                    directoryInfo = albumInfo?.Title is null 
+                    directoryInfo = albumInfo?.Title is null
                         ? directoryInfo
                         : Directory.CreateDirectory(Path.Combine(directoryInfo.FullName, albumInfo.Title.Title));
 
@@ -25,7 +37,7 @@ namespace bc_cli
                     {
                         var returnImage = image.Encode(SKEncodedImageFormat.Jpeg, SkiaSharpMaxQuality);
 
-                        using (var data = File.Create(Path.Combine(directoryInfo.FullName, $"{albumInfo.Artist}.jpeg")))
+                        using (var data = File.Create(Path.Combine(directoryInfo.FullName, $"{albumInfo.Title?.Title ?? albumInfo.Artist}.jpeg")))
                         {
                             returnImage.SaveTo(data);
                         }
@@ -36,7 +48,10 @@ namespace bc_cli
                         await File.WriteAllBytesAsync(Path.Combine(directoryInfo.FullName, $"{track.Title}.mp3"), track.Data);
                     });
                 }
+
+                tokenSource.Cancel();
             }
+            catch (OperationCanceledException) { }
         }
     }
 }
