@@ -13,5 +13,5 @@ Arguments:
 
 # Installation
 ```
-dotnet tool install --global bc_cli --version 1.0.1
+dotnet tool install --global bc_cli --version 1.0.2
 ```
