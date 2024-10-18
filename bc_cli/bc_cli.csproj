@@ -14,18 +14,8 @@
     <PackageReadmeFile>bc_readme.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/E-lmir/BandCampDownloader_cli</PackageProjectUrl>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\..\..\..\Desktop\bc_readme.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\..\..\..\Downloads\Nolla.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BCDownloader" Version="1.0.3" />
