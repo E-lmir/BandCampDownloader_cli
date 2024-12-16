@@ -20,7 +20,7 @@ namespace bc_cli
                     while (true)
                     {
                         Console.Write(".");
-                        Thread.Sleep(50);
+                        Thread.Sleep(50); 
                         ct.ThrowIfCancellationRequested();
                     }
                 }, tokenSource.Token);
